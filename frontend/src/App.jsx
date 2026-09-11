@@ -369,10 +369,34 @@ Message: ${form.message || "None"}
               </h2>
 
               <p className="mt-5 leading-8 text-gray-600">
-                Two hearts, one journey. From friendship to love,
-                from love to forever. We are excited to begin this
-                new chapter together and would be honoured to have
-                you with us on our special day.
+                Our Story,
+
+Our journey to this day has not been easy.
+
+Our story was written not only in beautiful moments, but also through tears, challenges, waiting, uncertainty, and countless prayers. There were moments when we wondered if we would make it this far.
+
+But through every season, God remained faithful.
+
+When we couldn't understand what He was doing, He was preparing us. When we thought some chapters were coming to an end, God was simply turning the page.
+
+Our journey taught us that love is not about having a perfect story. It is about choosing each other through the difficult seasons, giving grace, forgiving, praying, and trusting God together.
+
+Today, as we stand before God and our loved ones, we realize that every challenge was part of our testimony.
+
+We are not here because the journey was easy. We are here because God was faithful.
+
+And to anyone reading our story who may be going through a difficult season: don't give up.
+
+Your current chapter may be painful, but it is not the end of your story. Keep praying. Keep believing. Keep trusting God.
+
+Because sometimes, the most beautiful part of your story is the chapter you haven't reached yet.
+
+Today, we look at our journey with grateful hearts and simply say:
+
+“Look what the Lord has done.”
+
+Alfred & Pearl
+
               </p>
 
               <div className="mt-7 flex items-center gap-4">
@@ -556,13 +580,11 @@ Message: ${form.message || "None"}
 
               {/* WhatsApp */}
               <a
-                href="https://wa.me/233551233838?text=Hello%2C%20I%20would%20like%20to%20RSVP%20for%20Alfred%20%26%20Pearl%27s%20wedding."
-                target="_blank"
-                rel="noopener noreferrer"
+               
                 className="mt-7 flex w-fit items-center gap-3 rounded-full border-2 border-green-700 bg-white px-6 py-3 font-semibold text-green-800 transition hover:bg-green-700 hover:text-white"
               >
                 <MessageCircle size={20} />
-                RSVP via WhatsApp
+                RSVP 
               </a>
 
               <div className="mt-7 space-y-3 text-sm text-gray-600">
