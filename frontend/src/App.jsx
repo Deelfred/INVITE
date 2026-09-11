@@ -82,27 +82,29 @@ export default function App() {
     });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+ const handleSubmit = (e) => {
+  e.preventDefault();
 
-    const message = `
-Hello, I would like to RSVP for Alfred & Pearl's wedding.
+  const message = `
+
 
 Name: ${form.name}
 Phone: ${form.phone}
 Attending: ${form.attending === "yes" ? "Yes" : "No"}
 Number of Guests: ${form.guests}
 Message: ${form.message || "None"}
-    `.trim();
+  `.trim();
 
-    const whatsappNumber = "233203016586";
+  // WhatsApp number: 0203016586
+  // Ghana country code: +233
+  const whatsappNumber = "233203016586";
 
-    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
-      message
-    )}`;
+  const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
+    message
+  )}`;
 
-    window.open(whatsappUrl, "_blank");
-  };
+  window.open(whatsappUrl, "_blank");
+};
 
   // =========================
   // NAVIGATION
@@ -738,7 +740,7 @@ Alfred & Pearl
                   className="flex w-full items-center justify-center gap-2 rounded-xl bg-green-800 px-5 py-3.5 text-sm font-semibold text-white transition hover:bg-green-900"
                 >
                   <Send size={17} />
-                  Submit RSVP
+                  Submit 
                 </button>
               </form>
             </div>
