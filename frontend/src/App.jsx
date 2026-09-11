@@ -1,4 +1,7 @@
 import React, { useEffect, useState } from "react";
+import { Routes, Route } from "react-router-dom";
+import Admin from "./Admin";
+
 import {
   CalendarDays,
   Clock3,
@@ -13,7 +16,7 @@ import {
   ChevronDown,
 } from "lucide-react";
 
-export default function App() {
+function WeddingHome() {
   const weddingDate = new Date("2026-10-03T14:00:00+00:00");
 
   const [timeLeft, setTimeLeft] = useState({
@@ -82,28 +85,54 @@ export default function App() {
     });
   };
 
- const handleSubmit = (e) => {
+const handleSubmit = async (e) => {
   e.preventDefault();
 
-  const message = `
+  try {
+    const response = await fetch(
+      `${import.meta.env.VITE_API_URL}/api/rsvp`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: form.name,
+          phone: form.phone,
+          attending: form.attending,
+          guests: Number(form.guests),
+          message: form.message,
+        }),
+      }
+    );
 
+    const data = await response.json();
 
-Name: ${form.name}
-Phone: ${form.phone}
-Attending: ${form.attending === "yes" ? "Yes" : "No"}
-Number of Guests: ${form.guests}
-Message: ${form.message || "None"}
-  `.trim();
+    if (!response.ok) {
+      throw new Error(
+        data.message || "Failed to submit RSVP"
+      );
+    }
 
-  // WhatsApp number: 0203016586
-  // Ghana country code: +233
-  const whatsappNumber = "233203016586";
+    // Show success message
+    alert("Thank you! Your RSVP has been submitted successfully.");
 
-  const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
-    message
-  )}`;
+    // Clear the form
+    setForm({
+      name: "",
+      phone: "",
+      attending: "yes",
+      guests: "1",
+      message: "",
+    });
 
-  window.open(whatsappUrl, "_blank");
+  } catch (error) {
+    console.error("RSVP submission error:", error);
+
+    alert(
+      "Sorry, your RSVP could not be submitted. Please try again."
+    );
+  }
 };
 
   // =========================
@@ -774,5 +803,13 @@ Alfred & Pearl
         </footer>
       </main>
     </div>
+  );
+}
+export default function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<WeddingHome />} />
+      <Route path="/admin" element={<Admin />} />
+    </Routes>
   );
 }

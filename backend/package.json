@@ -1,0 +1,22 @@
+{
+  "name": "wedding-rsvp-backend",
+  "version": "1.0.0",
+  "description": "Alfred and Pearl Wedding RSVP Backend",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "author": "fred",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "mongoose": "^9.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}
