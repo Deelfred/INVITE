@@ -459,29 +459,17 @@ function WeddingHome() {
                 {`Our Story,
 
 Our journey to this day has not been easy.
-
 Our story was written not only in beautiful moments, but also through tears, challenges, waiting, uncertainty, and countless prayers. There were moments when we wondered if we would make it this far.
-
 But through every season, God remained faithful.
-
 When we couldn't understand what He was doing, He was preparing us. When we thought some chapters were coming to an end, God was simply turning the page.
-
 Our journey taught us that love is not about having a perfect story. It is about choosing each other through the difficult seasons, giving grace, forgiving, praying, and trusting God together.
-
 Today, as we stand before God and our loved ones, we realize that every challenge was part of our testimony.
-
 We are not here because the journey was easy. We are here because God was faithful.
-
 And to anyone reading our story who may be going through a difficult season: don't give up.
-
 Your current chapter may be painful, but it is not the end of your story. Keep praying. Keep believing. Keep trusting God.
-
 Because sometimes, the most beautiful part of your story is the chapter you haven't reached yet.
-
 Today, we look at our journey with grateful hearts and simply say:
-
 “Look what the Lord has done.”
-
 Alfred & Pearl`}
               </div>
 
@@ -810,13 +798,9 @@ Alfred & Pearl`}
                               3 Guests
                             </option>
 
-                            <option value="4">
-                              4 Guests
-                            </option>
+                          
 
-                            <option value="5">
-                              5 Guests
-                            </option>
+                           
                           </select>
 
                           <ChevronDown
@@ -861,7 +845,7 @@ Alfred & Pearl`}
                       ) : (
                         <>
                           <Send size={17} />
-                          Submit RSVP
+                          Submit 
                         </>
                       )}
                     </button>
@@ -888,12 +872,7 @@ Alfred & Pearl`}
                     We would love to see you there!
                   </p>
 
-                  <p className="mt-4 text-sm leading-6 text-gray-500">
-                    Your RSVP has been received successfully.
-                    <br />
-                    We look forward to celebrating this
-                    special day together.
-                  </p>
+                 
 
                   <div className="mt-7 flex items-center gap-3 text-green-700">
                     <Heart
