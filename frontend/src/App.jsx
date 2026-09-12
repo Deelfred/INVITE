@@ -103,76 +103,75 @@ function WeddingHome() {
   // SUBMIT RSVP
   // =========================
   const handleSubmit = async (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    if (isSubmitting) {
-      return;
+  if (isSubmitting) {
+    return;
+  }
+
+  setIsSubmitting(true);
+  setErrorMessage("");
+
+  try {
+    const apiUrl = import.meta.env.VITE_API_URL;
+
+    console.log("API URL:", apiUrl);
+
+    if (!apiUrl) {
+      throw new Error(
+        "The RSVP service is not configured correctly."
+      );
     }
 
-    setIsSubmitting(true);
-    setErrorMessage("");
-
-    try {
-      const apiUrl = import.meta.env.VITE_API_URL;
-
-      if (!apiUrl) {
-        throw new Error(
-          "The RSVP service is not configured correctly."
-        );
+    const response = await fetch(
+      `${apiUrl.replace(/\/$/, "")}/api/rsvp`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: form.name.trim(),
+          phone: form.phone.trim(),
+          attending: form.attending,
+          guests: Number(form.guests),
+          message: form.message.trim(),
+        }),
       }
+    );
 
-      const response = await fetch(
-        `${apiUrl.replace(/\/$/, "")}/api/rsvp`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            name: form.name.trim(),
-            phone: form.phone.trim(),
-            attending: form.attending,
-            guests: Number(form.guests),
-            message: form.message.trim(),
-          }),
-        }
+    const data = await response.json().catch(() => ({}));
+
+    console.log("RSVP status:", response.status);
+    console.log("RSVP response:", data);
+
+    if (!response.ok || !data.success) {
+      throw new Error(
+        data.message || "We could not submit your RSVP."
       );
-
-      let data = {};
-
-      try {
-        data = await response.json();
-      } catch {
-        data = {};
-      }
-
-      if (!response.ok) {
-        throw new Error(
-          data.message || "We could not submit your RSVP."
-        );
-      }
-
-      // SUCCESS
-      setSubmitted(true);
-
-      setForm({
-        name: "",
-        phone: "",
-        attending: "yes",
-        guests: "1",
-        message: "",
-      });
-    } catch (error) {
-      console.error("RSVP submission error:", error);
-
-      setErrorMessage(
-        error.message ||
-          "Sorry, we could not submit your RSVP. Please try again."
-      );
-    } finally {
-      setIsSubmitting(false);
     }
-  };
+
+    // SUCCESS
+    setSubmitted(true);
+
+    setForm({
+      name: "",
+      phone: "",
+      attending: "yes",
+      guests: "1",
+      message: "",
+    });
+  } catch (error) {
+    console.error("RSVP submission error:", error);
+
+    setErrorMessage(
+      error.message ||
+        "Sorry, we could not submit your RSVP. Please try again."
+    );
+  } finally {
+    setIsSubmitting(false);
+  }
+};
 
   // =========================
   // RESET RSVP
